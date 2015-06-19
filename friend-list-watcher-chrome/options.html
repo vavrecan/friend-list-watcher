@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="assets/css/font-awesome.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css" />
+    <script type="text/javascript" src="options.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Friend List Watcher</title>
+</head>
+<body>
+
+<div class="container" style="margin-top: 20px;margin-bottom: 20px;">
+
+    <div role="tabpanel">
+
+        <!-- Nav tabs -->
+        <div class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#"><img src="icon-48.png" style="float: left;display: inline;max-height: 20px;"/></a>
+
+                    <ul class="nav navbar-nav" role="tablist">
+                        <li role="presentation" class="active"><a href="#changes" aria-controls="configure" role="tab" data-toggle="tab">Changes</a></li>
+                        <li role="presentation"><a href="#configure" aria-controls="configure" role="tab" data-toggle="tab">Options</a></li>
+                        <li role="presentation"><a href="#about" aria-controls="about" role="tab" data-toggle="tab">About</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="changes">
+
+                <div class="alert alert-info" id="checking-changes">
+                    <i class="fa fa-fw fa-refresh fa-spin"></i>
+                    Checking for changes
+                    <div class="text" style="font-size: 0.9em;padding-left: 23px;"></div>
+                </div>
+                <a class="btn btn-md btn-info full" href="" id="check-changes" style="">Check for changes</a>
+
+                <div id="changes-list">
+
+                </div>
+
+                <div id="change-template" style="display: none">
+                    <div class="alert" style="margin-top:10px;line-height: 30px">
+                        <span class="added"><i class="fa fa-plus-circle fa-2x fa-fw text-success pull-left"></i></span>
+                        <span class="removed"><i class="fa fa-minus-circle fa-2x fa-fw text-danger pull-left"></i></span>
+
+                        <img class="pull-left" width="30" height="30" style="margin-right: 10px;border-radius: 3px;border-left: 5px solid;  box-sizing: content-box;" />
+                        <span class="name"></span>
+                        <span class="date pull-right"></span>
+                    </div>
+                </div>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="configure">
+
+                <a class="btn btn-md btn-info" href="" id="download-json" style="">Download friendlist.json</a>
+                <a class="btn btn-md btn-info" href="" id="download-csv" style="">Download friendlist.csv</a>
+
+            </div>
+            <div role="tabpanel" class="tab-pane" id="about">
+                <div>
+                    <a class="btn btn-sm btn-warning">Homepage</a> Developed by <a href="http://www.facebook.com/marek.vavrecan">Marek Vavrecan</a> &copy; 2015
+                </div>
+                <div style="margin-top: 10px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

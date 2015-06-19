@@ -1,0 +1,37 @@
+{
+    "name": "Facebook Friend List Watcher",
+    "version": "1.0",
+    "description": "Shows modifications of your Facebook friend list",
+    "background": {
+        "scripts": ["libs/js-yaml.min.js", "libs/facebook.js", "background.js"],
+        "persistent": true
+    },
+    "page_action": {
+        "default_icon": "icon-19.png",
+        "default_title": "FLW is ready",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "downloads",
+        "declarativeContent",
+        "*://*.facebook.com/*",
+        "storage"
+    ],
+    "icons": {
+        "48": "icon-48.png",
+        "128": "icon-128.png"
+    },
+    "content_scripts": [{
+        "matches": ["*://www.facebook.com/", "*://facebook.com/"],
+        "js": ["content.js"],
+        "run_at": "document_end",
+        "all_frames": true
+    }],
+    "web_accessible_resources": [
+        "public.js", "assets/*"
+    ],
+    "options_page": "options.html",
+    "manifest_version": 2
+}
