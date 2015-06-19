@@ -24,7 +24,7 @@
         "128": "icon-128.png"
     },
     "content_scripts": [{
-        "matches": ["*://www.facebook.com/", "*://facebook.com/"],
+        "matches": ["*://www.facebook.com/", "*://facebook.com/", "*://touch.facebook.com/"],
         "js": ["content.js"],
         "run_at": "document_end",
         "all_frames": true
