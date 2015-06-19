@@ -3,10 +3,9 @@
 This is Friend List Watcher for Facebook. It stores friend list and its changes since last visit -
 so you can track who removed or added you as a friend.
 
-### How to use
+### Homepage
 
-- You can access Friend List Watcher over options in Chrome extensions
-- Friend List Watcher icon will be shown in address bar when visiting https://www.facebook.com
+- [http://vavrecan.github.io/friend-list-watcher/](http://vavrecan.github.io/friend-list-watcher/)
 
 ## Author
 - [Marek Vavrecan](mailto:vavrecan@gmail.com)
