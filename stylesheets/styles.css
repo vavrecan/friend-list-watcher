@@ -75,8 +75,8 @@ header h1 {
   padding: 0;
   font-size: 24px;
   line-height: 1.2;
-  color: #C6EAFA;
-  text-shadow: rgba(255, 255, 255, 0.9) 0 1px 0;
+  color: #fff;
+  text-shadow: rgba(0, 0, 0, 0.9) 0 1px 0;
 }
 header.without-description h1 {
   margin: 10px 0;
