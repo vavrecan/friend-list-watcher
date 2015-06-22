@@ -146,8 +146,14 @@ function FacebookAPI()
             info.name = document.querySelector("title").innerText;
             info.username = self.matchScriptContents(document, /"page_uri":"https(.*?)facebook\.com\\\/(.*?)\?/g, 2);
 
-            self.info = info;
-            callback(info);
+            // user is not logged in if info is 0
+            if (info.id == "0") {
+                callback(false);
+            }
+            else {
+                self.info = info;
+                callback(info);
+            }
         });
     };
 
@@ -158,6 +164,11 @@ function FacebookAPI()
     this.getNotes = function(callback) {
         var self = this;
         this.getInfo(function(info) {
+            if (!info) {
+                callback(false);
+                return;
+            }
+
             self.request({"url": "https://m.facebook.com/notes?id=" +  info.id}, function(document) {
 
                 var notes = [];
@@ -185,6 +196,11 @@ function FacebookAPI()
     this.getNote = function(noteId, callback) {
         var self = this;
         this.getInfo(function(info) {
+            if (!info) {
+                callback(false);
+                return;
+            }
+
             var url = "https://m.facebook.com/note/edit/dialog/?note_id=" + noteId + "&m_sess=&__dyn=&__req=8&__ajax__=true&__user=" +  info.id;
             self.request({"url": url, "response": "json"}, function(data) {
                 var doc = document.implementation.createHTMLDocument("");
@@ -209,6 +225,11 @@ function FacebookAPI()
     this.updateNote = function(noteId, params, callback) {
         var self = this;
         this.getInfo(function(info) {
+            if (!info) {
+                callback(false);
+                return;
+            }
+
             self.getNote(noteId, function(note) {
                 var url = "https://m.facebook.com" + note._internal.action;
                 var postParams = {
@@ -228,7 +249,7 @@ function FacebookAPI()
                     "origin": "https://m.facebook.com"}, function(data) {
                     // TODO add verification
                     console.log(data);
-                    callback();
+                    callback(true);
                 });
             });
         });
@@ -237,6 +258,10 @@ function FacebookAPI()
     this.createNote = function(params, callback) {
         var self = this;
         this.getInfo(function(info) {
+            if (!info) {
+                callback(false);
+                return;
+            }
 
             var url = "https://m.facebook.com/editnote.php";
             self.request({"url": url, "response": "document"}, function(doc) {
@@ -260,7 +285,7 @@ function FacebookAPI()
                     "referer": "https://m.facebook.com/editnote.php",
                     "origin": "https://m.facebook.com"}, function(data) {
                     console.log(data);
-                    callback();
+                    callback(true);
                 });
             });
         });
@@ -367,6 +392,11 @@ function FacebookAPI()
     this.getFriends = function(callback) {
         var self = this;
         this.getInfo(function(info) {
+            if (!info) {
+                callback(false);
+                return;
+            }
+
             self.getFriendsFragmentMobile(info, 0, true, function(data) {
                 callback(data);
             });

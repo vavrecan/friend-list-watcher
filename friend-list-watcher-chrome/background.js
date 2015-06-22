@@ -100,6 +100,12 @@ function checkChanges() {
     });
 
     facebookAPI.getFriends(function(friends) {
+        if (!friends) {
+            // todo show error on failure
+            finishedUpdating();
+            return;
+        }
+
         chrome.runtime.sendMessage({
             from:    'background',
             subject: 'processing',
@@ -124,6 +130,10 @@ function checkChanges() {
 
 function getChanges() {
     facebookAPI.findNoteByTitle("Friend List Changes", function(note) {
+        if (!note) {
+            return;
+        }
+
         facebookAPI.getNote(note.id, function(data) {
             var changes = unserialize(data.body);
 
@@ -138,6 +148,10 @@ function getChanges() {
 
 function getFriendlist() {
     facebookAPI.findNoteByTitle("Current Friend List", function(note) {
+        if (!note) {
+            return;
+        }
+
         facebookAPI.getNote(note.id, function(data) {
             var list = unserialize(data.body);
 
